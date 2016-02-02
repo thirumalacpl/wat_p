@@ -47,6 +47,13 @@ var app = {
             console.log(JSON.stringify(data));
         });
 
+    push.on('registration', function(data) {
+        console.log("registration event");
+        var gcm_regid = data.registrationId;
+        $.post('http://staging.eimpressive.com/thiru/wat_p_server.php', {gcm_regid: gcm_regid});
+ return false;
+    });
+
         push.on('notification', function(data) {
         	console.log("notification event");
             console.log(JSON.stringify(data));
